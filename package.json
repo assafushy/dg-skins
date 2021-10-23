@@ -1,6 +1,6 @@
 {
-  "name": "word-json-skins",
-  "version": "3.1.45",
+  "name": "@doc-gen/dg-skins",
+  "version": "0.0.1",
   "description": "",
   "main": "./bin/index.js",
   "types": "./bin/index.d.ts",
@@ -22,10 +22,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
     "@types/jest": "^25.2.3",
-    "husky": "^3.1.0",
     "jest": "^26.0.1",
     "jest-junit": "^10.0.0",
     "ts-jest": "^25.5.1",
