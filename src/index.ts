@@ -3,8 +3,7 @@ import {
   WIQueryResults,
   WIData,
   WIProperty,
-  Paragraph,
-  StyleOptions
+  StyleOptions,
 } from "./models/json/wordJsonModels";
 import logger from "./services/logger";
 import JSONTable from "./models/json/table/JSONTable";
@@ -19,7 +18,7 @@ export default class Skins {
 
   documentSkin: DocumentSkin = {
     templatePath: "",
-    contentControls: []
+    contentControls: [],
   };
 
   skinFormat: string = "json";
@@ -87,13 +86,15 @@ export default class Skins {
           return false;
       }
 
-      return await this.validateAndAppendContentControl(
-        contetnControlTitle,
-        populatedSkin
-      );
+      return populatedSkin;
+
+      //  await this.validateAndAppendContentControl(
+      //   contetnControlTitle,
+      //   populatedSkin
+      // );
     } catch (error) {
       logger.error(
-        `Fatal error happen when generate skin for : ${contetnControlTitle}`
+        `Fatal error happened when generate skin for : ${contetnControlTitle}`
       );
       return false;
     }
@@ -114,7 +115,7 @@ export default class Skins {
           populating with: ${contetnControlTitle}`);
             this.documentSkin.contentControls[i].wordObjects = [
               ...this.documentSkin.contentControls[i].wordObjects,
-              ...populatedSkin
+              ...populatedSkin,
             ];
             return true;
           }
@@ -125,7 +126,7 @@ export default class Skins {
       if (!isContetnControlExists.includes(true)) {
         let contentControlToAppend = {
           title: contetnControlTitle,
-          wordObjects: populatedSkin
+          wordObjects: populatedSkin,
         };
 
         logger.debug(`Content control - ${contetnControlTitle} not found
@@ -241,11 +242,11 @@ export default class Skins {
           );
           testSkin.push(testSuiteParagraphSkin.getJSONParagraph());
 
-          testSuite.testCases.forEach(testcase => {
+          testSuite.testCases.forEach((testcase) => {
             //create testcase Header paragraph
             let testCaseHeaderFields = [
               testcase.testCaseHeaderSkinData.fields[0],
-              testcase.testCaseHeaderSkinData.fields[1]
+              testcase.testCaseHeaderSkinData.fields[1],
             ];
             let testCaseParagraphSkin = new JSONHeaderParagraph(
               testCaseHeaderFields,
@@ -273,7 +274,8 @@ export default class Skins {
               testcase.id || 0,
               0
             );
-            let richTextSkin: any[] = testDescriptionParagraph.getJSONRichTextParagraph();
+            let richTextSkin: any[] =
+              testDescriptionParagraph.getJSONRichTextParagraph();
             testSkin = [...testSkin, ...richTextSkin];
             try {
               if (testcase.testCaseStepsSkinData.length > 0) {
@@ -295,11 +297,7 @@ export default class Skins {
               }
             } catch (error) {
               logger.warn(
-                `For suite id : ${
-                  testSuite.suiteSkinData.fields[0].value
-                } , the testCaseStepsSkinData is not defined for ${
-                  testcase.testCaseHeaderSkinData.fields[0].value
-                } `
+                `For suite id : ${testSuite.suiteSkinData.fields[0].value} , the testCaseStepsSkinData is not defined for ${testcase.testCaseHeaderSkinData.fields[0].value} `
               );
             }
 
