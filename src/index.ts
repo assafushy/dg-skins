@@ -35,7 +35,7 @@ export default class Skins {
     styles: StyleOptions,
     headingLvl: number = 0,
     includeAttachments: boolean = true
-  ): Promise<boolean> {
+  ): Promise<any> {
     try {
       let populatedSkin;
       switch (skinType) {
