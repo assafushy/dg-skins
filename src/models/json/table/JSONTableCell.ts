@@ -6,6 +6,7 @@ import {
   WIProperty,
   MultipeValuesWIProperty,
   StyleOptions,
+  JsonHtml,
 } from "../wordJsonModels";
 import JSONRun from "../JSONRun";
 import logger from "../../../services/logger";
@@ -22,6 +23,8 @@ export default class JSONTableCell {
   ): TableCell {
     let runs: Run[] = [];
     let attachments: Attachment[] = [];
+    let HtmlData: string = ""
+
     //multiple values
     if (
       typeof data.value !== "string" &&
@@ -36,7 +39,11 @@ export default class JSONTableCell {
             path: runData.tableCellAttachmentLink,
           };
           attachments.push(attachment);
-        } else {
+        } 
+        else if(/<[^>]*>/.test(runData.value)) {
+          HtmlData = runData.value || "";
+        }
+        else {
           styles.Uri = runData.relativeUrl
             ? runData.relativeUrl
             : runData.Uri
@@ -47,7 +54,11 @@ export default class JSONTableCell {
           runs = [...runs, ...jsonRun.getRun()];
         }
       });
-    } else {
+    }
+    else if(/<[^>]*>/.test(data.value)) {
+      HtmlData = data.value || "";
+    }
+     else {
       styles.Uri = data.relativeUrl
         ? data.relativeUrl
         : data.url
@@ -57,16 +68,33 @@ export default class JSONTableCell {
       let jsonRun = new JSONRun(`${text}`, styles);
       runs = [...runs, ...jsonRun.getRun()];
     }
-
-    return {
-      attachments: attachments,
+    if (HtmlData!= "")
+    {
+      let Html:JsonHtml = {
+        type:"html",
+        Html:HtmlData
+      }
+      return {
+        attachments: attachments,
+        Paragraphs: [
+          {
+            Runs: runs,
+          },
+        ],
+        Html
+      };
+    }
+    else{
+      return {
+        attachments: attachments,
       Paragraphs: [
         {
           Runs: runs,
         },
       ],
     };
-  } //generateJsonCells
+  }
+} //generateJsonCells
 
   isPictureUri(uri: string) {
     try {

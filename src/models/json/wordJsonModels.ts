@@ -30,6 +30,7 @@ export interface TableCell {
       Runs: Run[];
     }
   ];
+  Html?:JsonHtml
 }
 export interface Paragraph {
   type: string;
