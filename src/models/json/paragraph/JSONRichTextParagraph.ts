@@ -30,7 +30,7 @@ export default class JSONRichTextParagraph {
   generateJsonRichTextParagraphs(field: WIProperty, paragraphStyles): Run[] {
     let titleStyle = JSON.parse(JSON.stringify(paragraphStyles));
 
-    titleStyle.isBold = false;
+    titleStyle.isBold = true;
     titleStyle.IsUnderline = true;
     titleStyle.InsertSpace = true;
     titleStyle.InsertLineBreak = true;

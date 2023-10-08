@@ -10,6 +10,9 @@ import JSONTable from "./models/json/table/JSONTable";
 import JSONParagraph from "./models/json/paragraph/JSONParagraph";
 import JSONHeaderParagraph from "./models/json/paragraph/JSONTestSuiteHeaderParagraph";
 import JSONRichTextParagraph from "./models/json/paragraph/JSONRichTextParagraph";
+import {
+  DescriptionandProcedureStyle
+} from "./models/json/default";
 
 export default class Skins {
   SKIN_TYPE_TABLE = "table";
@@ -262,7 +265,7 @@ export default class Skins {
 
             let testDescriptionTitleParagraph = new JSONParagraph(
               { name: "Title", value: "Test Description:" },
-              styles,
+              DescriptionandProcedureStyle,
               testcase.id || 0,
               0
             );
@@ -281,7 +284,7 @@ export default class Skins {
               if (testcase.testCaseStepsSkinData.length > 0) {
                 let testProcedureTitleParagraph = new JSONParagraph(
                   { name: "Title", value: "Test Procedure:" },
-                  styles,
+                  DescriptionandProcedureStyle,
                   testcase.id || 0,
                   0
                 );

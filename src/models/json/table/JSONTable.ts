@@ -28,7 +28,20 @@ export default class JSONTable {
   generateJsonRows(data: any, tableStyles: StyleOptions): TableRow[] {
     let rows: TableRow[] = [];
     let headersRowData: WIData = this.headersRowAdapter(data[0]);
-    let headersRow = new JSONTableRow(headersRowData, tableStyles);
+    //console.log("headersRowData", headersRowData)
+    //console.log("data[0]", data[0])
+
+    let style2 = {
+      isBold: true,
+      IsItalic: false,
+      IsUnderline: false,
+      Size: 12,
+      Uri: null,
+      Font: "Ariel",
+      InsertLineBreak: false,
+      InsertSpace: false,
+    };
+    let headersRow = new JSONTableRow(headersRowData, style2);
 
     rows.push(headersRow.getRow());
 
@@ -46,6 +59,8 @@ export default class JSONTable {
       headerValuesWi = data.fields.map((field: WIProperty) => {
         return { name: "header", value: field.name };
       });
+      //console.log("headerValuesWi:", headerValuesWi); // Print headerValuesWi here
+
     } catch (error) {
       logger.error(`no fields to append`);
     }
