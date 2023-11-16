@@ -27,6 +27,7 @@ export default class JSONRun {
       rowArray.forEach((text, i) => {
         let run: Run = defaultJsonRun;
         text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
+        test = text.replace("%)@(=", " ")
         run.text = text;
         run.Bold = style.isBold;
         run.Italic = style.IsItalic;
