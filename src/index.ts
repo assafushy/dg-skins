@@ -41,16 +41,7 @@ export default class Skins {
   ): Promise<any> {
     try {
       let populatedSkin;
-      let SuiteStyles = {
-        isBold: true,
-        IsItalic: false,
-        IsUnderline: false,
-        Size: 16,
-        Uri: null,
-        Font: "Arial",
-        InsertLineBreak: true,
-        InsertSpace: true,
-      };
+
       switch (skinType) {
         case this.SKIN_TYPE_TABLE:
           populatedSkin = this.generateQueryBasedTable(
@@ -81,7 +72,7 @@ export default class Skins {
         case this.SKIN_TYPE_TEST_PLAN:
           populatedSkin = this.generateTestBasedSkin(
             data,
-            SuiteStyles,
+            styles,
             headingLvl,
             includeAttachments
           );
@@ -194,7 +185,7 @@ export default class Skins {
             if (
               field.name === "Description: " ||
               field.name === "Test Description:"
-            ) {
+            ) {       
               let paragraphSkin = new JSONRichTextParagraph(
                 field,
                 styles,
@@ -243,9 +234,19 @@ export default class Skins {
         let testSkin: any[] = [];
         //create suite Header pragraph
         data.forEach((testSuite: any) => {
+          let SuiteStyles = {
+            isBold: true,
+            IsItalic: false,
+            IsUnderline: false,
+            Size: 16,
+            Uri: null,
+            Font: "Arial",
+            InsertLineBreak: true,
+            InsertSpace: true,
+          };
           let testSuiteParagraphSkin = new JSONHeaderParagraph(
             testSuite.suiteSkinData.fields,
-            styles,
+            SuiteStyles,
             testSuite.suiteSkinData.id || 0,
             testSuite.suiteSkinData.level
               ? headingLvl + testSuite.suiteSkinData.level
@@ -288,7 +289,7 @@ export default class Skins {
               DescriptionandProcedureStyle,
               testcase.id || 0,
               0
-            );
+            );     
             testSkin.push(testDescriptionTitleParagraph.getJSONParagraph());
             let testDescriptionParagraph = new JSONRichTextParagraph(
               testcase.testCaseHeaderSkinData.fields[2],
@@ -339,7 +340,7 @@ export default class Skins {
                 testcase.testCaseAttachments.length > 0 &&
                 includeAttachments == true
               ) {
-  
+                
                 let testDescriptionTitleParagraph = new JSONParagraph(
                   { name: "Title", value: "Test Case Attachments:" },
                   styles,
