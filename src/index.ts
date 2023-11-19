@@ -41,6 +41,16 @@ export default class Skins {
   ): Promise<any> {
     try {
       let populatedSkin;
+      let SuiteStyles = {
+        isBold: true,
+        IsItalic: false,
+        IsUnderline: false,
+        Size: 16,
+        Uri: null,
+        Font: "Arial",
+        InsertLineBreak: true,
+        InsertSpace: true,
+      };
       switch (skinType) {
         case this.SKIN_TYPE_TABLE:
           populatedSkin = this.generateQueryBasedTable(
@@ -71,7 +81,7 @@ export default class Skins {
         case this.SKIN_TYPE_TEST_PLAN:
           populatedSkin = this.generateTestBasedSkin(
             data,
-            styles,
+            SuiteStyles,
             headingLvl,
             includeAttachments
           );
@@ -251,9 +261,19 @@ export default class Skins {
               testcase.testCaseHeaderSkinData.fields[0],
               testcase.testCaseHeaderSkinData.fields[1],
             ];
+            let TestCaseStyles = {
+              isBold: true,
+              IsItalic: false,
+              IsUnderline: false,
+              Size: 14,
+              Uri: null,
+              Font: "Arial",
+              InsertLineBreak: true,
+              InsertSpace: true,
+            };
             let testCaseParagraphSkin = new JSONHeaderParagraph(
               testCaseHeaderFields,
-              styles,
+              TestCaseStyles,
               testcase.id || 0,
               testcase.testCaseHeaderSkinData.level
                 ? headingLvl + testcase.testCaseHeaderSkinData.level
@@ -270,7 +290,6 @@ export default class Skins {
               0
             );
             testSkin.push(testDescriptionTitleParagraph.getJSONParagraph());
-
             let testDescriptionParagraph = new JSONRichTextParagraph(
               testcase.testCaseHeaderSkinData.fields[2],
               styles,
@@ -288,11 +307,21 @@ export default class Skins {
                   testcase.id || 0,
                   0
                 );
+                let TableContentStyles = {
+                  isBold: false,
+                  IsItalic: false,
+                  IsUnderline: false,
+                  Size: 12,
+                  Uri: null,
+                  Font: "Arial",
+                  InsertLineBreak: true,
+                  InsertSpace: true,
+                };
                 testSkin.push(testProcedureTitleParagraph.getJSONParagraph());
                 //create test steps table
                 let tableSkin = new JSONTable(
                   testcase.testCaseStepsSkinData,
-                  styles,
+                  TableContentStyles,
                   headingLvl
                 );
                 let populatedTableSkin = tableSkin.getJSONTable();
@@ -310,6 +339,7 @@ export default class Skins {
                 testcase.testCaseAttachments.length > 0 &&
                 includeAttachments == true
               ) {
+  
                 let testDescriptionTitleParagraph = new JSONParagraph(
                   { name: "Title", value: "Test Case Attachments:" },
                   styles,

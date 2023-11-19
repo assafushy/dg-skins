@@ -2,12 +2,12 @@ import Skins from "../index";
 
 let main = async () => {
   let styles = {
-    isBold: true,
+    isBold: false,
     IsItalic: false,
     IsUnderline: false,
     Size: 12,
     Uri: null,
-    Font: "Ariel",
+    Font: "Arial",
     InsertLineBreak: true,
     InsertSpace: true,
   };
