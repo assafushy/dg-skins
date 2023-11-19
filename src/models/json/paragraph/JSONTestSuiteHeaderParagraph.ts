@@ -78,7 +78,7 @@ export default class JSONTestSuiteHeaderParagraph {
     if (field.name === "Title: ") {
       paragraphStyles.InsertLineBreak = false;
       paragraphStyles.Uri = field.url;
-      jsonRun = new JSONRun(`%)@(=${field.value}-`, paragraphStyles);
+      jsonRun = new JSONRun(field.value, paragraphStyles);
       runs = [...runs, ...jsonRun.runs];
     } else {
       jsonRun = new JSONRun(field.value, paragraphStyles);

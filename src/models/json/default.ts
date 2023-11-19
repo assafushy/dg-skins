@@ -15,7 +15,7 @@ export let defaultJsonRun: Run = {
 export let DescriptionandProcedureStyle: StyleOptions = {
   isBold: true,
   IsItalic: false,
-  IsUnderline: false,
+  IsUnderline: true,
   Size: 12,
   Uri: null,
   Font: "Arial",
