@@ -7,7 +7,7 @@ export let defaultJsonRun: Run = {
   Underline: false,
   Size: 12,
   Uri: null,
-  Font: "Ariel",
+  Font: "Arial",
   InsertLineBreak: true,
   InsertSpace: true
 };
@@ -15,10 +15,10 @@ export let defaultJsonRun: Run = {
 export let DescriptionandProcedureStyle: StyleOptions = {
   isBold: true,
   IsItalic: false,
-  IsUnderline: false,
+  IsUnderline: true,
   Size: 12,
   Uri: null,
-  Font: "Ariel",
+  Font: "Arial",
   InsertLineBreak: false,
   InsertSpace: false,
 };
