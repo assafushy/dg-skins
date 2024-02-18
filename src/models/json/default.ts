@@ -8,7 +8,7 @@ export let defaultJsonRun: Run = {
   Size: 12,
   Uri: null,
   Font: "Arial",
-  InsertLineBreak: true,
+  InsertLineBreak: false,
   InsertSpace: true
 };
 

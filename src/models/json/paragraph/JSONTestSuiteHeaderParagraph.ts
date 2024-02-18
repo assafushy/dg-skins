@@ -51,7 +51,7 @@ export default class JSONTestSuiteHeaderParagraph {
     titleStyle.isBold = false;
     titleStyle.IsUnderline = true;
     titleStyle.InsertSpace = true;
-    titleStyle.InsertLineBreak = true;
+    titleStyle.InsertLineBreak = false;
     //adds ':' to field titles
     if (field.name !== "") {
       field.name += ": ";
