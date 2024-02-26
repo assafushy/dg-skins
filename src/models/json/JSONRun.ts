@@ -41,7 +41,7 @@ export default class JSONRun {
         if (rowArray.length == 1) {
           run.InsertLineBreak = style.InsertLineBreak;
         } else {
-          run.InsertLineBreak = true;
+          run.InsertLineBreak = false;
         }
         if (rowArray.length - 1 == i) {
           run.InsertLineBreak = style.InsertLineBreak;

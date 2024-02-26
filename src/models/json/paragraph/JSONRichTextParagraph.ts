@@ -33,7 +33,7 @@ export default class JSONRichTextParagraph {
     titleStyle.isBold = true;
     titleStyle.IsUnderline = true;
     titleStyle.InsertSpace = true;
-    titleStyle.InsertLineBreak = true;
+    titleStyle.InsertLineBreak = false;
 
     let richTextSkin: any[] = [];
     //handle rich text
