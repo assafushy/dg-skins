@@ -14,13 +14,13 @@ const replaceBr = ({ tag, deleteFrom, deleteTo, rangesArr }) => {
 export default class JSONRun {
   runs: Run[];
 
-  constructor(value: string, styles: StyleOptions) {
+  constructor(value: string, styles: StyleOptions, fieldtype?) {
     console.log("value", value)
-    this.runs = this.generateJsonRun(value, styles);
+    this.runs = this.generateJsonRun(value, styles, fieldtype?);
     console.log("this.runs", this.runs)
   } //constructor
 
-  generateJsonRun(value: string, style: StyleOptions): Run[] {
+  generateJsonRun(value: string, style: StyleOptions, fieldtype?): Run[] {
     let runs: Run[] = [];
     let rowArray;
     try {
@@ -28,7 +28,9 @@ export default class JSONRun {
       //try iterating the array
       rowArray.forEach((text, i) => {
         let run: Run = defaultJsonRun;
-        //text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
+        if (fieldtype !== "SuiteHeaderParagraphTitle") {
+          text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
+      }
         run.text = text;
         console.log("run.text", run.text)
         run.Bold = style.isBold;

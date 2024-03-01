@@ -76,10 +76,11 @@ export default class JSONTestSuiteHeaderParagraph {
     }
 
     if (field.name === "Title: ") {
+      let fieldtype = "SuiteHeaderParagraphTitle";
       paragraphStyles.InsertLineBreak = false;
       paragraphStyles.Uri = field.url;
       console.log("field.value: ", field.value)
-      jsonRun = new JSONRun(field.value, paragraphStyles);
+      jsonRun = new JSONRun(field.value, paragraphStyles, fieldtype);
       runs = [...runs, ...jsonRun.runs];
     } else {
       jsonRun = new JSONRun(field.value, paragraphStyles);
