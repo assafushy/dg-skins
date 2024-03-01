@@ -58,6 +58,7 @@ export default class JSONParagraph {
     } //end if
 
     if (field.name === "Title: ") {
+      console.log("field.value2", field.value)
       paragraphStyles.Uri = field.url;
       paragraphStyles.InsertLineBreak = false;
       jsonRun = new JSONRun(field.value, paragraphStyles);

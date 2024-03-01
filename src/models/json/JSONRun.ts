@@ -28,6 +28,7 @@ export default class JSONRun {
         let run: Run = defaultJsonRun;
         text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
         run.text = text;
+        console.log("run.text", run.text)
         run.Bold = style.isBold;
         run.Italic = style.IsItalic;
         run.Underline = style.IsUnderline;
