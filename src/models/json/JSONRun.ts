@@ -15,7 +15,9 @@ export default class JSONRun {
   runs: Run[];
 
   constructor(value: string, styles: StyleOptions) {
+    console.log("value", value)
     this.runs = this.generateJsonRun(value, styles);
+    console.log("this.runs", this.runs)
   } //constructor
 
   generateJsonRun(value: string, style: StyleOptions): Run[] {
