@@ -49,7 +49,7 @@ export default class JSONTableCell {
             : runData.Uri
             ? runData.Uri
             : null;
-          styles.InsertLineBreak = true;
+          styles.InsertLineBreak = false;
           let jsonRun = new JSONRun(runData.value, styles);
           runs = [...runs, ...jsonRun.getRun()];
         }

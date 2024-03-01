@@ -51,7 +51,7 @@ export default class JSONTestSuiteHeaderParagraph {
     titleStyle.isBold = false;
     titleStyle.IsUnderline = true;
     titleStyle.InsertSpace = true;
-    titleStyle.InsertLineBreak = true;
+    titleStyle.InsertLineBreak = false;
     //adds ':' to field titles
     if (field.name !== "") {
       field.name += ": ";
@@ -70,15 +70,16 @@ export default class JSONTestSuiteHeaderParagraph {
     } //end if
 
     if (field.name === "ID: ") {
-      field.value = `${field.value}-`;
+      field.value = `${field.value}`;
       paragraphStyles.Uri = field.url;
       paragraphStyles.InsertLineBreak = false;
     }
 
     if (field.name === "Title: ") {
+      let fieldtype = "SuiteHeaderParagraphTitle";
       paragraphStyles.InsertLineBreak = false;
       paragraphStyles.Uri = field.url;
-      jsonRun = new JSONRun(field.value, paragraphStyles);
+      jsonRun = new JSONRun(field.value, paragraphStyles, fieldtype);
       runs = [...runs, ...jsonRun.runs];
     } else {
       jsonRun = new JSONRun(field.value, paragraphStyles);

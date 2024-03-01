@@ -38,7 +38,7 @@ export default class JSONParagraph {
     titleStyle.isBold = false;
     titleStyle.IsUnderline = true;
     titleStyle.InsertSpace = true;
-    titleStyle.InsertLineBreak = true;
+    titleStyle.InsertLineBreak = false;
     //adds ':' to field titles
     if (field.name !== "") {
       field.name += ": ";
@@ -58,6 +58,7 @@ export default class JSONParagraph {
     } //end if
 
     if (field.name === "Title: ") {
+      g("field.value2", field.value)
       paragraphStyles.Uri = field.url;
       paragraphStyles.InsertLineBreak = false;
       jsonRun = new JSONRun(field.value, paragraphStyles);
