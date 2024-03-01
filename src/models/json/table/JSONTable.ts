@@ -28,8 +28,6 @@ export default class JSONTable {
   generateJsonRows(data: any, tableStyles: StyleOptions): TableRow[] {
     let rows: TableRow[] = [];
     let headersRowData: WIData = this.headersRowAdapter(data[0]);
-    //console.log("headersRowData", headersRowData)
-    //console.log("data[0]", data[0])
 
     let style2 = {
       isBold: true,
@@ -59,7 +57,6 @@ export default class JSONTable {
       headerValuesWi = data.fields.map((field: WIProperty) => {
         return { name: "header", value: field.name };
       });
-      //console.log("headerValuesWi:", headerValuesWi); // Print headerValuesWi here
 
     } catch (error) {
       logger.error(`no fields to append`);
