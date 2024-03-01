@@ -70,7 +70,7 @@ export default class JSONTestSuiteHeaderParagraph {
     } //end if
 
     if (field.name === "ID: ") {
-      field.value = `${field.value}-`;
+      field.value = `${field.value}`;
       paragraphStyles.Uri = field.url;
       paragraphStyles.InsertLineBreak = false;
     }
