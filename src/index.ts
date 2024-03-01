@@ -254,7 +254,6 @@ export default class Skins {
               ? headingLvl
               : 1
           );
-          console.log("testSuite.suiteSkinData.fields",testSuite.suiteSkinData.fields)
           testSkin.push(testSuiteParagraphSkin.getJSONParagraph());
 
           testSuite.testCases.forEach((testcase) => {
@@ -263,7 +262,6 @@ export default class Skins {
               testcase.testCaseHeaderSkinData.fields[0],
               testcase.testCaseHeaderSkinData.fields[1],
             ];
-            console.log("testCaseHeaderFields", testCaseHeaderFields)
             let TestCaseStyles = {
               isBold: true,
               IsItalic: false,
@@ -284,7 +282,6 @@ export default class Skins {
                 ? headingLvl
                 : 1
             );
-            console.log("testCaseParagraphSkin", testCaseParagraphSkin)
             testSkin.push(testCaseParagraphSkin.getJSONParagraph());
 
             let testDescriptionTitleParagraph = new JSONParagraph(

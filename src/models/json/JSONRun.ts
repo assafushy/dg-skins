@@ -15,9 +15,7 @@ export default class JSONRun {
   runs: Run[];
 
   constructor(value: string, styles: StyleOptions, fieldtype?: string) {
-    console.log("value", value)
     this.runs = this.generateJsonRun(value, styles, fieldtype);
-    console.log("this.runs", this.runs)
   } //constructor
 
   generateJsonRun(value: string, style: StyleOptions, fieldtype?: string): Run[] {
@@ -32,7 +30,6 @@ export default class JSONRun {
           text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
       }
         run.text = text;
-        console.log("run.text", run.text)
         run.Bold = style.isBold;
         run.Italic = style.IsItalic;
         run.Underline = style.IsUnderline;
