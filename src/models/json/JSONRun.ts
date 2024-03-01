@@ -14,13 +14,13 @@ const replaceBr = ({ tag, deleteFrom, deleteTo, rangesArr }) => {
 export default class JSONRun {
   runs: Run[];
 
-  constructor(value: string, styles: StyleOptions, fieldtype?) {
+  constructor(value: string, styles: StyleOptions, fieldtype?: string) {
     console.log("value", value)
-    this.runs = this.generateJsonRun(value, styles, fieldtype?);
+    this.runs = this.generateJsonRun(value, styles, fieldtype);
     console.log("this.runs", this.runs)
   } //constructor
 
-  generateJsonRun(value: string, style: StyleOptions, fieldtype?): Run[] {
+  generateJsonRun(value: string, style: StyleOptions, fieldtype?: string): Run[] {
     let runs: Run[] = [];
     let rowArray;
     try {
