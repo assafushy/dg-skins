@@ -26,7 +26,7 @@ export default class JSONRun {
       //try iterating the array
       rowArray.forEach((text, i) => {
         let run: Run = defaultJsonRun;
-        text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
+        //text = `${striphtml(text.toString(), { cb: replaceBr })}` || "";
         run.text = text;
         console.log("run.text", run.text)
         run.Bold = style.isBold;
