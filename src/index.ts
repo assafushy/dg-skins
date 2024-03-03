@@ -241,7 +241,7 @@ export default class Skins {
             Size: 16,
             Uri: null,
             Font: "Arial",
-            InsertLineBreak: true,
+            InsertLineBreak: false,
             InsertSpace: true,
           };
           let testSuiteParagraphSkin = new JSONHeaderParagraph(
@@ -269,7 +269,7 @@ export default class Skins {
               Size: 14,
               Uri: null,
               Font: "Arial",
-              InsertLineBreak: true,
+              InsertLineBreak: false,
               InsertSpace: true,
             };
             let testCaseParagraphSkin = new JSONHeaderParagraph(
@@ -315,7 +315,7 @@ export default class Skins {
                   Size: 12,
                   Uri: null,
                   Font: "Arial",
-                  InsertLineBreak: true,
+                  InsertLineBreak: false,
                   InsertSpace: true,
                 };
                 testSkin.push(testProcedureTitleParagraph.getJSONParagraph());
