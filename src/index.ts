@@ -228,7 +228,6 @@ export default class Skins {
     includeAttachments: boolean = true
   ) {
     logger.debug(`Generating testSkin as ${this.skinFormat}`);
-
     switch (this.skinFormat) {
       case "json":
         let testSkin: any[] = [];
@@ -300,6 +299,32 @@ export default class Skins {
             let richTextSkin: any[] =
               testDescriptionParagraph.getJSONRichTextParagraph();
             testSkin = [...testSkin, ...richTextSkin];
+            
+            if (testcase.testCaseRequirements) {
+              if (
+                testcase.testCaseRequirements.length > 0
+              ) {
+                
+                let testDescriptionTitleParagraph = new JSONParagraph(
+                  { name: "Title", value: "Covered Requirements:" },
+                  DescriptionandProcedureStyle,
+                  testcase.id || 0,
+                  0
+                );
+                testSkin.push(testDescriptionTitleParagraph.getJSONParagraph());
+                //create test steps table
+                let tableSkin = new JSONTable(
+                  testcase.testCaseRequirements,
+                  styles,
+                  headingLvl
+                );
+
+                let populatedTableSkin = tableSkin.getJSONTable();
+
+                testSkin.push(populatedTableSkin);
+              }
+            }
+            
             try {
               if (testcase.testCaseStepsSkinData.length > 0) {
                 let testProcedureTitleParagraph = new JSONParagraph(
@@ -334,6 +359,34 @@ export default class Skins {
               );
             }
 
+            
+
+            //attachments table2
+            if (testcase.testCaseAttachments2) {
+              if (
+                testcase.testCaseAttachments2.length > 0 &&
+                includeAttachments == true
+              ) {
+                
+                let testDescriptionTitleParagraph = new JSONParagraph(
+                  { name: "Title2", value: "Test Case Attachments2:" },
+                  styles,
+                  testcase.id || 0,
+                  0
+                );
+                testSkin.push(testDescriptionTitleParagraph.getJSONParagraph());
+                //create test steps table
+                let tableSkin = new JSONTable(
+                  testcase.testCaseAttachments2,
+                  styles,
+                  headingLvl
+                );
+                let populatedTableSkin = tableSkin.getJSONTable();
+                testSkin.push(populatedTableSkin);
+              }
+            }
+
+
             //attachments table
             if (testcase.testCaseAttachments) {
               if (
@@ -358,6 +411,7 @@ export default class Skins {
                 testSkin.push(populatedTableSkin);
               }
             }
+            
           });
         });
         return testSkin;
