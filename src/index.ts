@@ -357,35 +357,7 @@ export default class Skins {
               logger.warn(
                 `For suite id : ${testSuite.suiteSkinData.fields[0].value} , the testCaseStepsSkinData is not defined for ${testcase.testCaseHeaderSkinData.fields[0].value} `
               );
-            }
-
-            
-
-            //attachments table2
-            if (testcase.testCaseAttachments2) {
-              if (
-                testcase.testCaseAttachments2.length > 0 &&
-                includeAttachments == true
-              ) {
-                
-                let testDescriptionTitleParagraph = new JSONParagraph(
-                  { name: "Title2", value: "Test Case Attachments2:" },
-                  styles,
-                  testcase.id || 0,
-                  0
-                );
-                testSkin.push(testDescriptionTitleParagraph.getJSONParagraph());
-                //create test steps table
-                let tableSkin = new JSONTable(
-                  testcase.testCaseAttachments2,
-                  styles,
-                  headingLvl
-                );
-                let populatedTableSkin = tableSkin.getJSONTable();
-                testSkin.push(populatedTableSkin);
-              }
-            }
-
+           }
 
             //attachments table
             if (testcase.testCaseAttachments) {
@@ -411,7 +383,6 @@ export default class Skins {
                 testSkin.push(populatedTableSkin);
               }
             }
-            
           });
         });
         return testSkin;
